@@ -21,7 +21,7 @@ $ venv\Scripts\activate
 $ pip install -r req.txt
 ```
 
-위와 별도로 시스템에 `Mongodb`가 설치되어 있고 실행 중이어야 합니다.
+위와 별도로 시스템에 `Mongodb`가 설치되어 있고 실행 중이어야 합니다.  
 2. 실행하기
 ```
 python main.py
