@@ -160,6 +160,11 @@ async def abort(sid, msg):
     print("!!! [BREAK] !!!")
     await runner.stop_now()
 
+@sio.on("reserve")
+async def reserve(sid, msg):
+    print(f"!!! [RESERVE - {msg}] !!!")
+    await runner.reserve(msg)
+
 
 @sio.on("disconnect")
 async def disconnect(sid):

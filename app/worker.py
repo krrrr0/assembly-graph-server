@@ -19,6 +19,8 @@ async def growth_func(ms):
     return math.floor(100 * math.pow(math.e, r * ms))
 
 
+start_number = 0
+
 
 class BackgroundRunner:
     def __init__(self):
@@ -34,6 +36,7 @@ class BackgroundRunner:
 
     async def run_main(self, sio):
         print("[INIT] Starting...")
+        global start_number
         start_number = random.randint(100, 1000)
 
         async with aiofiles.open("p.csv", mode="r") as afp:
@@ -132,6 +135,10 @@ class BackgroundRunner:
     async def stop_now(self):
         self.stop = True
         return
+
+    async def reserve(self, msg):
+        global start_number
+        self.queue[start_number] = int(float(msg) * 100)
 
     async def bet(self, sid, msg, sio):
         print(f"bet {sid} {msg}")
