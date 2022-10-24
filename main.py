@@ -154,11 +154,11 @@ async def broadcast(sid, msg):
 async def place_bet(sid, msg):
     await runner.bet(sid, msg, sio)
 
-# 테스트용
-# @sio.on("break")
-# async def abort(sid, msg):
-#     print("!!! [BREAK] !!!")
-#     await runner.stop_now()
+# 브키 실험 대응
+@sio.on("break")
+async def abort(sid, msg):
+    print("!!! [BREAK] !!!")
+    await runner.stop_now()
 
 
 @sio.on("disconnect")
@@ -167,6 +167,6 @@ async def disconnect(sid):
 
 
 if __name__ == "__main__":
-    kwargs = {"host": "0.0.0.0", "port": 5000, "workers": 20}
-    kwargs.update({"debug": True, "reload": True})
+    kwargs = {"host": "0.0.0.0", "port": 5000, "workers": 1}
+    # kwargs.update({"debug": True, "reload": True})
     uvicorn.run("main:app", **kwargs)
